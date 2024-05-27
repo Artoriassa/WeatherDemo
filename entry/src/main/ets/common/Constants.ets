@@ -14,4 +14,5 @@ export default class Constants {
   static readonly EMPTY_STRING = '';
   static readonly DASH = '-';
   static readonly SLASH = '/';
+  static readonly DEGREE = '°';
 }

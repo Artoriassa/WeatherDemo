@@ -47,6 +47,10 @@
     {
       "name": "image_size_m",
       "value": "36"
+    },
+    {
+      "name": "opacity_seventy",
+      "value": "0.7"
     }
   ]
 }
