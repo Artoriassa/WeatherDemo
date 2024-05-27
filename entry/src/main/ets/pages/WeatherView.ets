@@ -2,7 +2,7 @@ import Constants from '../common/Constants'
 
 @Entry
 @Component
-struct Index {
+struct WeatherView {
   build() {
     Column() {
       this.currentWeatherView()
