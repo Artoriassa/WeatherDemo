@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "next_twenty_four_hours",
+      "value": "Next 24 hours"
+    },
+    {
+      "name": "feels_like",
+      "value": "Feels like"
+    },
+    {
+      "name": "three_hour_weather_forecast",
+      "value": "3 hour weather forecast"
     }
   ]
 }

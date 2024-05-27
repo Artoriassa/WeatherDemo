@@ -43,6 +43,10 @@
     {
       "name": "border_radius_regular",
       "value": "12"
+    },
+    {
+      "name": "image_size_m",
+      "value": "36"
     }
   ]
 }
