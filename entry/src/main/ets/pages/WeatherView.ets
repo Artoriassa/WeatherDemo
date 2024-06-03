@@ -7,11 +7,12 @@ import WeatherDataModel from '../viewModel/WeatherDataModel'
 struct WeatherView {
   @State weather: Weather = new Weather('26', '18', '27', '26', '多云')
 
-  aboutToAppear() {
-    WeatherDataModel.getRealtimeWeather().then((data) => {
-      console.info('-+12+-'+JSON.stringify(data))
-    })
-  }
+  // aboutToAppear() {
+  //   WeatherDataModel.getRealtimeWeather().then((data) => {
+  //     console.info('-+12+-'+JSON.stringify(data))
+  //   })
+  // }
+
   build() {
     Column() {
       this.currentWeatherView()
@@ -23,49 +24,53 @@ struct WeatherView {
   }
 
   @Builder currentWeatherView() {
-    Row() {
-      Column({space: Constants.SPACING_EXTRA_SMALL}) {
-        Row({space: Constants.SPACING_MEDIUM}) {
-          Text(this.weather.temp + Constants.DEGREE)
-            .fontSize($r('app.float.logo_size_m'))
-            .fontColor(Color.White)
-          Image($r('app.media.app_icon'))
-            .height($r('app.float.image_size_m'))
-        }
+    Stack() {
+      Image($r('app.media.thundering'))
+      Row() {
+        Column({space: Constants.SPACING_EXTRA_SMALL}) {
+          Row({space: Constants.SPACING_MEDIUM}) {
+            Text(this.weather.temp + Constants.DEGREE)
+              .fontSize($r('app.float.logo_size_m'))
+              .fontColor(Color.White)
+            Image($r('app.media.app_icon'))
+              .height($r('app.float.image_size_m'))
+          }
 
-        Row() {
-          Text($r('app.string.next_twenty_four_hours'))
+          Row() {
+            Text($r('app.string.next_twenty_four_hours'))
+              .fontColor(Color.White)
+              .fontWeight(FontWeight.Bold)
+            Text(Constants.COLON + Constants.SPACE + this.weather.tempMax + Constants.DEGREE + Constants.SLASH + this.weather.tempMin + Constants.DEGREE)
+              .fontColor(Color.White)
+              .fontWeight(FontWeight.Bold)
+          }
+          .opacity($r('app.float.opacity_seventy'))
+        }
+        .alignItems(HorizontalAlign.Start)
+
+        Column({space: Constants.SPACING_SMALL}) {
+          Blank()
+          Text(this.weather.description)
             .fontColor(Color.White)
             .fontWeight(FontWeight.Bold)
-          Text(Constants.COLON + Constants.SPACE + this.weather.tempMax + Constants.DEGREE + Constants.SLASH + this.weather.tempMin + Constants.DEGREE)
-            .fontColor(Color.White)
-            .fontWeight(FontWeight.Bold)
+          Row() {
+            Text($r('app.string.feels_like'))
+              .fontColor(Color.White)
+              .fontWeight(FontWeight.Bold)
+            Text(Constants.COLON + Constants.SPACE + this.weather.feelsLike + Constants.DEGREE)
+              .fontColor(Color.White)
+              .fontWeight(FontWeight.Bold)
+          }
         }
         .opacity($r('app.float.opacity_seventy'))
       }
-      .alignItems(HorizontalAlign.Start)
-
-      Column({space: Constants.SPACING_SMALL}) {
-        Blank()
-        Text(this.weather.description)
-          .fontColor(Color.White)
-          .fontWeight(FontWeight.Bold)
-        Row() {
-          Text($r('app.string.feels_like'))
-            .fontColor(Color.White)
-            .fontWeight(FontWeight.Bold)
-          Text(Constants.COLON + Constants.SPACE + this.weather.feelsLike + Constants.DEGREE)
-            .fontColor(Color.White)
-            .fontWeight(FontWeight.Bold)
-        }
-      }
-      .opacity($r('app.float.opacity_seventy'))
+      .padding({top: $r('app.float.margin_xl'), left: $r('app.float.margin_m'), right: $r('app.float.margin_m')})
+      .alignItems(VerticalAlign.Top)
+      .width(Constants.FULL_LENGTH)
+      .justifyContent(FlexAlign.SpaceBetween)
     }
-    .padding({top: $r('app.float.margin_xl'), left: $r('app.float.margin_m'), right: $r('app.float.margin_m')})
-    .alignItems(VerticalAlign.Top)
+    .alignContent(Alignment.Top)
     .height(Constants.QUARTER_LENGTH)
-    .width(Constants.FULL_LENGTH)
-    .justifyContent(FlexAlign.SpaceBetween)
   }
 
   @Builder futureWeatherView() {
