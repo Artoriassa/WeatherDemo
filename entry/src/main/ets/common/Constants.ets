@@ -3,6 +3,7 @@ export default class Constants {
   static readonly COMMON_LENGTH = '90%';
   static readonly HALF_LENGTH = '50%';
   static readonly QUARTER_LENGTH = '25%';
+  static readonly ONE_EIGHTH_LENGTH = '12.5%';
   static readonly SPACING_EXTRA_SMALL = 4;
   static readonly SPACING_SMALL = 8;
   static readonly SPACING_MEDIUM = 16;

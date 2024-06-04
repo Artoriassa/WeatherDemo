@@ -1,4 +1,4 @@
-export default class  Weather {
+export default class Weather {
   public temp: string
   public tempMin: string
   public tempMax: string
